@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Lab28.Models.Card>
+
+
+    @if (ViewBag.Deck != null)
+    {
+        <form action="/Home/DrawCards" method="get">
+            <input type="submit" value="Draw Cards!" />
+            <input type="hidden" name="deck_id" value="@ViewBag.Deck" />
+        </form>
+    }
+
+<form action="/Home/CreateDeck" method="post">
+    <input type="submit" value="Make a new deck" />
+</form>
+@if (Model != null)
+{
+    <h1>Your Hand:</h1>
+    foreach (var card in Model)
+    {
+    <img style="width:210px;height:300px;" src="@card.Image" title="@card.Value of @card.Suit" />
+    }
+}
